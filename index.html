@@ -10,12 +10,14 @@
 <body>
     <div style="padding: 5px;">
         <input type="text" size="40" id = "url" value="https://www.youtube.com">
-        <input value="Open" onclick="openWindowUrl()" type="button">
-        <input value="CloseNow" onclick="openWindowUrl()" type="button">
+        <input value="OpenNow" onclick="openWindowUrl(undefined)" type="button">        
     </div>
     
     <div style="padding: 5px;">
-        <input type="time" size="40" id = "time">
+        Open at:    <input type="time" size="40" id = "timeOpen">
+        <input value="Open" onclick="openSite()" type="button">
+        <p></p>
+        Close at:    <input type="time" size="40" id = "timeClose">
         <input value="ViewTime" onclick="viewTime()" type="button">
     </div>
 </body>

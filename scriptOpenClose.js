@@ -1,21 +1,14 @@
 
-window.onload = function currentTime()
-{    
-    document.getElementById("time").value = new Date();
-}
-
 function viewTime()
 {
-    let timeImput = document.getElementById("time");
+    let timeImput = document.getElementById("timeClose");
     alert(timeImput.value);    
-    calculateTimeToEnd();
 }
 
-function calculateTimeToEnd()
-{
-    let timeImput = document.getElementById("time");
+function calculateTimeToEnd(timeImput)
+{    
     let now = new Date()+""; 
-
+   // timeImput = document.getElementById("timeClose");
     //var re = /\d+:\d+/;
     let reg = /\d\d:\d\d/;
     let endLesson = now.replace(reg, timeImput.value);
@@ -23,11 +16,29 @@ function calculateTimeToEnd()
     return Date.parse(endLesson) - Date.parse(now);
 }
 
-function openWindowUrl() 
+function f(sdda) 
+{
+return 1000;    
+}
+
+function openSite()
+{
+    let timeOpen = document.getElementById("timeOpen");   
+    let timeClose = document.getElementById("timeClose");
+    setTimeout(() => openWindowUrl(timeClose), calculateTimeToEnd(timeOpen));//calculateTimeToEnd(timeOpen)
+}
+
+function openWindowUrl(timeCloseImput) 
 {
     let Url = document.getElementById("url")
     let myWindow = window.open(Url.value);
-    setTimeout(() => closeWindow(myWindow), calculateTimeToEnd());
+
+    if (timeCloseImput == undefined)
+    {
+        timeCloseImput = document.getElementById("timeClose");
+    }
+    
+    setTimeout(() => closeWindow(myWindow), calculateTimeToEnd(timeCloseImput));
 }
 
 function closeWindow(myWindow) 
